@@ -11,7 +11,7 @@
 touch Downloads/{a,b,c}.txt Downloads/cool{1..5}.pdf Downloads/awesome_{1..4}.mp4 Downloads/beautiful.jpg Downloads/coolu.png Downloads/notes.docx Downloads/notes.sh Downloads/pretty{1..3}.mp3  
 
  # Moving my files in to the correct directories
-    # mv to move the files, I did this step before I made the automated the process of moving files in to teh correct directories. This step is therefore not necessary anymore.
+    # mv to move the files, I did this step before I made the automated the process of moving files in to the correct directories. This step is therefore not necessary anymore.
         
 mv Downloads/{a,b,c}.text Downloads/Text
 mv Downloads/cool{1..5}.pdf Dowloads/PDF
