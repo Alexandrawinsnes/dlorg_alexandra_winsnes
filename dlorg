@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
 
+mkdir -p Downloads/Docs Downloads/Images Downloads/Music Downloads/Other Downloads/PDF Downloads/Text
+
+touch Downloads/{a,b,c}.txt Downloads/cool{1..5}.pdf Downloads/awesome_{1..4}.mp4 Downloads/beautiful.jpg Downloads/coolu.png Downloads/notes.docx Downloads/notes.sh Downloads/pretty{1..3}.mp3
+
