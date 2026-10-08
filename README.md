@@ -53,4 +53,21 @@ do
 
     esac
 
-done    
+done
+
+
+
+ # Created a systemd service to automate my dlorg script.
+     # This is important to make the script run automatically instead of having to start it manually. I point ExecStart to my dlorg script because that is the program I want systemd to run and then WantedBy=default.target will make the service start automatically. 
+
+1 [Unit]
+  2 Description=Organize files in Downloads
+  3 After=default.target
+  4 
+  5 [Service]
+  6 Type=simple
+  7 ExecStart=%h/.local/bin/dlorg
+  8 
+  9 [Install]
+ 10 WantedBy=default.target
+    
