@@ -1,55 +1,55 @@
  #!/usr/bin/env bash
   
+ # To specify the Downloads foalder that the script should monitor.
+TARGET_DIR="/home/alexandrawinsnes/Downloads"
+
  # Creating directories
     # mkdir to create directories, -p to make sure the parent directories are created if they dont exist.
 
  mkdir -p Downloads/Docs Downloads/Images Downloads/Music Downloads/Other Downloads/PDF Downloads/Text Downloads/Script
 
  # Creating files
-    # touch to create the files, starts with Downloads/ to make sure the fike is created in Downloads.
+    # touch to create the files, starts with "$TARGET_DIR"/ to make sure the file is created in my /home/alexandrawinsnes/Downloads.
 
-touch Downloads/{a,b,c}.txt Downloads/cool{1..5}.pdf Downloads/awesome_{1..4}.mp4 Downloads/beautiful.jpg Downloads/coolu.png Downloads/notes.docx Downloads/notes.sh Downloads/pretty{1..3}.mp3  
+touch "$TARGET_DIR"/{a,b,c}.txt "$TARGET_DIR"/cool{1..5}.pdf "$TARGET_DIR"/awesome_{1..4}.mp4 "$TARGET_DIR"/beautiful.jpg "$TARGET_DIR"/coolu.png "$TARGET_DIR"/notes.docx "$TARGET_DIR"/notes.sh "$TARGET_DIR"/pretty{1..3}.mp3
+  
 
  # Moving my files in to the correct directories
     # mv to move the files, I did this step before I made the automated the process of moving files in to the correct directories. This step is therefore not necessary anymore.
         
-mv Downloads/{a,b,c}.text Downloads/Text
-mv Downloads/cool{1..5}.pdf Dowloads/PDF
-mv Downloads/awesome_{1..4}.mp4 Downloads/Other
-mv Downloads/coolu.png Downloads/Images
-mv Downloads/notes.docx Downloads/Docs
-mv Downloads/notes.sh Downloads/Script
-mv Downloads/pretty{1..3}.mp3 Downloads/Music
-mv Downloads/beautifuk.jpg Downloads/Images
+mv "$TARGET_DIR"/{a,b,c}.text "$TARGET_DIR"/Text
+mv "$TARGET_DIR"/cool{1..5}.pdf "$TARGET_DIR"/PDF
+mv "$TARGET_DIR"/awesome_{1..4}.mp4 "$TARGET_DIR"/Other
+mv "$TARGET_DIR"/coolu.png "$TARGET_DIR"/Images
+mv "$TARGET_DIR"/notes.docx "$TARGET_DIR"/Docs
+mv "$TARGET_DIR"/notes.sh "$TARGET_DIR"/Script
+mv "$TARGET_DIR"/pretty{1..3}.mp3 "$TARGET_DIR"/Music
+mv "$TARGET_DIR"/beautiful.jpg "$TARGET_DIR"/Images
 
 
  # Automatically sorting files in to the correct directories
-    # inotifywait to automatically identify when a new file is created.
-    #  -m (monitor) to make sure the command run continously.
-    #  -e to decide what the intoifywait should monitor. 
-    #  create and moved_to means that it should react when a new file is created/a file is moved to Downloads.
-    # --format '%w%f' Downloads | to decide which information we need and gives us the file path and filename. And then which folder to monitor.    
+    # inotifywait monitors the Downloads folder for new or moved files in to Downloads. thw while loop reads the files and then the case statement identifies the file type and moves it to the correct folder.    
 
-inotifywait -m Downloads -e create -e moved_to --format '%w%f' Downloads |
+inotifywait -m -e create,moved_to --format '%w%f' "$TARGET_DIR" |
 
 while read file
 do
     case "$file" in
 
     *.pdf)
-        mv "$file" Downloads/PDF/ ;;
+        mv "$file" "$TARGET_DIR"/PDF/ ;;
     *.jpg|*.png)
-        mv "$file" Downloads/Images/ ;;
+        mv "$file" "$TARGET_DIR"/Images/ ;;
     *.mp3)
-        mv "$file" Downloads/Music/ ;;
+        mv "$file" "$TARGET_DIR"/Music/ ;;
     *.mp4)
-        mv "$file" Downloads/Other/ ;;
+        mv "$file" "$TARGET_DIR"/Other/ ;;
     *.txt)
-        mv "$file" Downloads/Text/ ;;
+        mv "$file" "$TARGET_DIR"/Text/ ;;
     *.docx)
-        mv "$file" Downloads/Docs/ ;;
+        mv "$file" "$TARGET_DIR"/Docs/ ;;
     *.sh)
-        mv "$file" Downloads/Script/ ;;
+        mv "$file" "$TARGET_DIR"/Script/ ;;
 
     esac
 
