@@ -1,6 +1,6 @@
  #!/usr/bin/env bash
   
- # To specify the Downloads foalder that the script should monitor.
+ # To specify the Downloads folder that the script should monitor.
 TARGET_DIR="/home/alexandrawinsnes/Downloads"
 
  # Creating directories
@@ -28,7 +28,7 @@ mv "$TARGET_DIR"/beautiful.jpg "$TARGET_DIR"/Images
 
 
  # Automatically sorting files in to the correct directories
-    # inotifywait monitors the Downloads folder for new or moved files in to Downloads. thw while loop reads the files and then the case statement identifies the file type and moves it to the correct folder.    
+    # inotifywait monitors the Downloads folder for new or moved files in to Downloads. The while loop reads the files and then the case statement identifies the file type and moves it to the correct folder.    
 
 inotifywait -m -e create,moved_to --format '%w%f' "$TARGET_DIR" |
 
