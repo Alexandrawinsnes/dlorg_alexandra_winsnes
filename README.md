@@ -28,7 +28,7 @@ mv "$TARGET_DIR"/beautiful.jpg "$TARGET_DIR"/Images
 
 
  # Automatically sorting files in to the correct directories
-    # inotifywait monitors the Downloads folder for new,moved or renamed files. The while loop reads the files and then the case statement identifies the file type and moves each file to the correct folder.    
+    # inotifywait monitors the Downloads folder for new,moved or renamed files. The while loop handles the files when changes are made and then the case statement identifies the file type and moves each file to the correct folder.    
 
 inotifywait -m -r -e create,moved_to,moved_from,close_write --format '%w%f' "$TARGET_DIR" |
 
