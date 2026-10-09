@@ -6,7 +6,7 @@ TARGET_DIR="/home/alexandrawinsnes/Downloads"
  # Creating directories
     # mkdir to create directories, -p to make sure the parent directories are created if they dont exist.
 
- mkdir -p Downloads/Docs Downloads/Images Downloads/Music Downloads/Other Downloads/PDF Downloads/Text Downloads/Script
+ mkdir -p "$TARGET_DIR"/{Docs,Images,Music,Other,PDF,Script,Text}
 
  # Creating files
     # touch to create the files, starts with "$TARGET_DIR"/ to make sure the file is created in my /home/alexandrawinsnes/Downloads.
