@@ -55,8 +55,8 @@ do
 
 done
 
-    #screenshot
-![Folder structure](Image_organized.jpg)                                                                     
+    #Screenshot
+![Folder structure](Image_organized.png)                                                                     
 
 
  # Created a systemd service to automate my dlorg script.
